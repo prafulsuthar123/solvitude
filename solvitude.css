@@ -1,0 +1,339 @@
+*{
+			margin: 0;padding: 0;box-sizing: border-box;
+		}
+    
+body{
+    background: url(namedlogo.png);
+    background-size:100%100% ;
+    background-repeat:no-repeat ;
+    margin-top: 2vh;
+    position: relative;
+}
+.referencetab{
+    padding: 20px 0;
+    width: 300px;
+    height: 450px;
+    background: rgb(22, 22, 22);
+    position: absolute;
+    right: 20px;
+    top: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: rgb(0, 102, 255);
+    font-family: sans-serif;
+}
+.referencetab h2{
+    margin-top: 10px;
+    font-family: sans-serif;
+}
+.referencetab .tabs:hover{
+    transform: scale(1.1);
+    background: rgb(19, 20, 20);
+}
+.referencetab .tabs i{
+    position: absolute;
+    left:20px;
+}
+.referencetab .tabs{
+    cursor:pointer;
+    position: relative;
+    text-align: center;
+    border: none;
+    font-size: 25px;
+    width: 220px; 
+    height: 70px;
+    color: rgb(21, 93, 226);
+    background: rgb(27, 28, 29);
+    margin-top: 20px;
+}
+
+
+.referencebox{
+    width: 800px;
+    height: 550px;
+    position: absolute;
+    left: 300px;
+    top: 30px;
+    display: none;
+    z-index: 4;
+    box-shadow: 9px 9px 20px 9px rgb(20, 20, 20);
+    border:none;
+    background:rgb(39, 40, 41);
+}
+.referencebox .ref_bar{
+    background:rgb(50, 52, 53); 
+    height: 30px;
+    position:relative;
+}
+
+
+.referencebox .ref_bar .close_div{
+    background:rgb(50, 52, 53);
+    height: 30px;
+    width: 40px;
+    color: white;
+    font-family: sans-serif; 
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+}
+ 
+ .advancebar .close_div:hover{
+    background: rgb(226, 28, 28);
+}
+ .advancebar{
+    background:rgb(50, 52, 53); 
+    height: 30px;
+    position:relative;
+}
+ .advancebar .close_div{
+    background:rgb(50, 52, 53);
+    height: 30px;
+    width: 40px;
+    color: white;
+    font-family: sans-serif; 
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+}
+.referencebox .ref_bar .close_div:hover{
+    background: rgb(226, 28, 28);
+}
+.bar{
+    background: rgba(0, 162, 232,0.8);
+    height: 3.7vh;
+    margin-top: -0.7vh;
+    display: flex;
+    align-items: center;
+}
+        .advance-options{
+            height: 96vh;    
+            width: 20%;
+            margin-top:-1vh;
+            background:rgba(55, 157, 240,0.8) ;
+            box-shadow: 9px 9px 20px rgb(20, 20, 20);
+            margin-left: -21%;
+            text-align: center;
+            z-index: 5;
+            overflow: auto;
+            position: relative;
+            
+        }
+        @keyframes drop-right{
+            from{margin-left: -21%;}
+            to{margin-left:0;}
+        }
+        @keyframes swipe{
+            from{margin-left:0;}
+            to{margin-left: -21%;}
+        }
+        .advance-options .option-area{
+            width:80%;
+            height:50px;
+            margin-top: 50px;
+            background-color: rgb(46, 174, 238);
+            text-align: center;
+            border:none;
+            font-size: 25px;
+            color: white;
+            cursor: pointer;
+            box-shadow:3px 3px 15px rgba(0, 81, 255, 0.603);
+        }
+        .advance-options .option-volume{
+            width:80%;
+            height:50px;
+            margin-top: 20px;
+            background-color: rgb(46, 174, 238);
+            text-align: center;
+            border:none;
+            font-size: 25px;
+            color: white;
+            cursor: pointer;
+            box-shadow:3px 3px 15px rgba(0, 81, 255, 0.603);
+        }
+        .advance-options .option-tsa{
+            width:80%;
+            height:50px;
+            margin-top: 20px;
+            background-color: rgb(46, 174, 238);
+            text-align: center;
+            border:none;
+            font-size: 25px;
+            color: white;
+            cursor: pointer;
+            box-shadow:3px 3px 15px rgba(0, 81, 255, 0.603);
+        }
+         .area{
+            box-shadow:3px 3px 15px rgba(0, 81, 255, 0.603);
+            position: absolute;
+            border-top: 2px solid black;
+            top: 110px;
+            width:200px;
+           height:0px;
+            left: -250px;
+            color: white;
+            font-family: sans-serif;
+            background: rgb(38, 136, 201);
+            overflow: hidden;
+           
+            
+        }
+        .volume{
+            box-shadow:3px 3px 15px rgba(0, 81, 255, 0.603);
+            position: absolute;
+            border-top: 2px solid black;
+            top: 180px;
+            width:200px;
+           height:0px;
+            left: -250px;
+            color: white;
+            font-family: sans-serif;
+            background: rgb(38, 136, 201);
+            overflow: hidden;
+            
+        }
+        .tsa{
+            box-shadow:3px 3px 15px rgba(0, 81, 255, 0.603);
+            position: absolute;
+            border-top: 2px solid black;
+            top: 250px;
+            width:200px;
+           height:0px;
+            left: -250px;
+            color: white;
+            font-family: sans-serif;
+            background: rgb(38, 136, 201);
+            overflow: hidden;
+            
+        }
+        .area div:hover,.volume div:hover,.tsa div:hover{
+            color: black;
+            font-weight: 600;
+        }
+        #closeX{
+            font-style: normal;
+            font-family: sans-serif;
+            color: blue;
+            margin-left: 150px;
+            font-weight: 700;
+            cursor: pointer; 
+            font-size: 25px; 
+        }
+        #closeX:hover{
+            color: red;
+        }
+       
+        .advance-btn{
+           margin-left: 100px;
+           padding: 2px 20px;
+           background:rgb(61, 178, 236) ;
+           border: none;
+           color: white;
+           font-family: sans-serif;
+           cursor: pointer;
+        }
+        .advance-btn:hover{
+            box-shadow:8px 0px 18px rgba(0, 81, 255, 0.507);
+        }
+        .bar i{
+            color: rgb(23, 23, 24);
+        }
+       
+        @keyframes drop-area{
+            0%{left: -250px;height: 0px;}
+            30%{left:50px ;height: 0px;}
+            100%{left:50px ; height: 280px;}
+        }
+        @keyframes nodrop-area{
+            0%{left:50px ; height: 280px;}
+            30%{left:50px ;height: 0px;}
+            100%{left: -250px;height: 0px}
+        }
+        .advancesolver{
+            width: 800px;
+            height: 550px;
+            position: absolute;
+            left: 300px;
+            top: 30px;
+            display:none;
+            z-index: 5;
+            box-shadow: 9px 9px 20px 9px rgb(20, 20, 20);
+            border:none;
+            background:rgb(39, 40, 41);
+        }
+        .advancesolver2{
+            width: 800px;
+            height: 550px;
+            position: absolute;
+            left: 300px;
+            top: 30px;
+            display:none;
+            z-index: 5;
+            box-shadow: 9px 9px 20px 9px rgb(20, 20, 20);
+            border:none;
+            background:rgb(39, 40, 41);
+        }
+
+        .advancesolver3{
+            width: 800px;
+            height: 550px;
+            position: absolute;
+            left: 300px;
+            top: 30px;
+            display:none;
+            z-index: 5;
+            box-shadow: 9px 9px 20px 9px rgb(20, 20, 20);
+            border:none;
+            background:rgb(39, 40, 41);
+        }
+        
+        #box{
+            text-align: center;
+            font-family: sans-serif;
+            color: white;
+        }
+        #box input{
+            box-shadow:3px 3px 15px rgb(20, 20, 20);
+            padding: 10px 20px;
+            width: 350px;
+            text-align: center;
+            height: 60px;
+            margin-left:230px;
+            border:none;
+            font-size: 24px;
+            background-color: white;
+            border-radius:20px;
+        }
+       
+        #box button{
+          width: 100px;
+          height: 50px;
+          margin-left:270px;
+          box-shadow:3px 3px 15px rgb(20, 20, 20);
+          border:none;
+          border-radius: 20px;
+          font-size: 27px;
+          background: pink;
+          color: rgb(170, 67, 67);
+
+        }
+        .advancebar #advancecloseX{
+            font-style: normal;
+            font-family: sans-serif;
+            color: white;
+            margin-left: 750px;
+            margin-top: 10px;
+            font-weight: 700;
+            cursor: pointer; 
+            font-size: 30px; 
+        }
+        #advancecloseX:hover{
+            color: red;
+        }
+        
+        

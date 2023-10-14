@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/fontawesome-free-5.15.1-web/css/all.css">
+    <title>Document</title>
+    <style>
+        .close_div{
+    background:rgb(50, 52, 53);
+    height: 30px;
+    width: 40px;
+    color: white;
+    font-family: sans-serif; 
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+               }
+
+      .close_div:hover{
+            background: rgb(226, 28, 28);
+            }
+            .test-window{
+            width: 800px;
+            height: 550px;
+            position: absolute;
+            left: 300px;
+            top: 30px;
+            z-index: 5;
+            box-shadow: 9px 9px 20px 9px rgb(20, 20, 20);
+            border:none;
+            background:rgb(42, 43, 44);
+            color: white;
+            text-align: center;
+            font-family: sans-serif;
+        }
+        .test-bar{
+            background:rgb(50, 52, 53); 
+    height: 30px;
+    position:relative;
+
+        }
+        .time{
+            margin-top: 50px;
+            margin-left: 200px;
+            background:rgb(50, 52, 53); 
+            box-shadow:3px 3px 15px rgb(20, 20, 20);
+            border-radius: 10px;
+            height: 20px;
+             width: 410px;
+             position:relative;
+
+        }
+        .time .timecolor{
+            background: rgb(0, 255, 42);
+            height: 20px;
+            border-radius: 10px;
+            width: 100%;
+        }
+   h2{
+       font-size: 30px;
+       font-family: sans-serif;
+   }
+   input:focus{
+       outline: none;
+   }
+   .play{
+       position: absolute;
+       top: 60%;
+       right: 42%;
+       width: 120px;
+       height: 50px;
+       font-size: 28px;
+       border: none;
+       background: rgb(0, 255, 149);
+       color: rgb(0, 102, 255);
+       cursor: pointer;
+       box-shadow:3px 3px 15px rgb(20, 20, 20);
+       border-radius: 20px;
+   }
+   .play:hover{
+    background:  rgb(234, 251, 255);
+       color:rgb(0, 255, 149);
+   }
+   @keyframes big {
+       0%{height:50px;top: 60%;width: 120px;right: 42%;}
+       25%{height: 80%;top: 20%;width: 120px;right: 42%;}
+       50%{height: 80%;top: 20%;width: 100%;right:0%;}
+       75%{height: 80%;top: 20%;width: 120px;right: 42%;}
+       100%{height:50px;top:60%;width: 120px;right:42%;}
+   }
+    #qs input, #qs button{
+       font-family: sans-serif;
+       font-size: 20px;
+       background: rgb(0, 217, 255);
+       border-radius: 20px;
+       padding: 10px 13px;
+       border: none;
+       width: 150px;
+       color: white;
+       cursor: pointer;
+       text-align: center;
+       margin-top: 50px;
+      box-shadow:3px 3px 15px rgb(20, 20, 20);
+       
+   }
+   #qs input:hover,  #qs button:hover{
+    color: rgb(0, 217, 255);
+    background: white;
+  }
+   .test{
+       text-align: center;
+   }
+    </style>
+</head>
+<body>
+  <div class="test-window">
+ <nav class="test-bar">
+     <button class="close_div">X</button>
+ </nav>
+ <div class="time">
+    <div class="timecolor"></div>
+</div>
+<h1>Test Your Knowledge</h1>
+
+<div class="q1" style="display: none;flex-direction: column;align-items: center;" id="qs">
+<h2>Q.1 Triangle area is solved by which theorum?</h2><br>
+<input type="text" id="ans1">
+<button class="sol">solve</button>
+</div>
+<br><button class="play" onclick="start_test()">START</button>
+  </div>  
+        
+  <script>
+    var num=0;
+      var play=document.querySelector(".play");
+      var test_window=document.querySelector(".test-window");
+     
+function start_test() {
+    play.setAttribute("style","animation:big 2.5s linear both")
+   setTimeout(() => {
+    play.style.display="none";
+    
+   }, 2500);
+   
+  }
+  var getnum=setInterval(() => {
+     num++;
+     document.querySelector(".q"+`${num}`).style.display="flex"; 
+     document.querySelector(".q"+`${num-1}`).style.display="none"; 
+  }, 10000);
+
+  </script>
+</body>
+</html>

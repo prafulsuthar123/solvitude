@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="solvitude.css">
+    <link rel="stylesheet" href="fontawesome-free-5.15.1-web/css/all.css">
+    <title>solvitude by praful suthar </title>
+    <style>
+        inut:focus{
+            /* outline: none; */
+            outline: .1px solid #09f;
+        }
+    </style>
+</head>
+<body>
+    <nav class="bar">
+<button class="advance-btn" onclick="showadvance(this)"><i class="fas fa-forward"></i> MAIN-MENU </button>
+</nav>
+<div class="referencetab">
+    <h2>REFERENCES</h2>
+    <button class="polyhedron tabs"><i class="fas fa-dice-d20"></i> Polyhedron</button>
+    <button class="2d tabs"><i class="fas fa-draw-polygon"></i> 2D-Figures</button>
+    <button class="circle tabs"><i class="fas fa-circle"></i> Circle</button>
+    <button class="formula tabs"><i class="fas fa-book-open"></i> Formulas</button>
+    <button class="test tabs"><i class="fas fa-pen"></i> Test/Exam</button>
+</div>
+
+<div class="referencebox">
+    <nav class="ref_bar">
+        <button class="close_div" onclick="ref_close()">X</button>
+    </nav>
+</div>
+<div class="advance-options">
+    
+    <button class="option-area" onclick="showareaopt()"><i class="fas fa-ruler"></i> Area Solver</button>
+    <div class="area"> 
+    <i onclick="closearea()" id="closeX">X</i>
+     <br>
+    <div class="triangle" onclick="triangle_area()" style="cursor: pointer;">Tri Area</div><br><hr><br>
+    <div class="rectangle" onclick="rectangle_area()" style="cursor: pointer;">Rect/sqr Area</div><br><hr><br>
+    <div class="trapezium" onclick="trapezium_area()" style="cursor: pointer;">Trapezium Area</div><br><hr><br>
+    <div class="rhombus" onclick="paralellogram_area()" style="cursor: pointer;">Parallelogram Area</div><br><hr><br>
+    <div class="rhombus" onclick="rhombus_area()" style="cursor: pointer;">Rhombus Area</div>
+    </div>    
+    <button class="option-volume" onclick="showvolopt()"><i class="fas fa-chart-area"></i> Volume Solver</button>
+    <div class="volume">
+    <i onclick="closevol()" id="closeX">X</i>
+     <br>
+    <div class="cube" onclick="cube_volume()" style="cursor: pointer;">cube volume</div><br><hr><br>
+    <div class="cuboid" onclick="cuboid_volume()" style="cursor: pointer;">cuboid volume</div><br><hr><br>
+    <div class="cone" onclick="cone_volume()" style="cursor: pointer;">cone volume</div><br><hr><br>
+    <div class="pyramid" onclick="pyramid_volume()" style="cursor: pointer;">pyramid volume</div><br><hr><br>
+    <div class="cylinder" onclick="cylinder_volume()" style="cursor: pointer;">cylinder volume</div>
+    
+    </div>
+    <button class="option-tsa" onclick="showtsaopt()"><i class="fas fa-cube"></i> T.S.A Solver</button>
+    <div class="tsa">
+    <i onclick="closetsa()" id="closeX">X</i>
+     <br>
+    <div class="cube" onclick="cube_tsa()" style="cursor: pointer;">cube surface area</div><br><hr><br>
+    <div class="cuboid" onclick="cuboid_tsa()" style="cursor: pointer;">cuboid surface area</div><br><hr><br>
+    <div class="cone" onclick="cone_tsa()" style="cursor: pointer;">cone surface area</div><br><hr><br>
+    <div class="pyramid">pyramid surface area</div><br><hr><br>
+    <div class="cylinder">cylinder surface area</div>
+    
+    </div>
+    <i class="fas fa-backward fa-2x" style="position: absolute; bottom: 10px; color: rgb(26, 26, 27);left: 100px;cursor: pointer;" onclick="swipe()"></i>
+    </div>
+    
+    
+    <div class="advancesolver">
+        <nav class="advancebar" >
+            <button class="close_div" onclick="closeadvance()">X</button>
+        </nav>
+         </div>
+         <div class="advancesolver2">
+            <nav class="advancebar" >
+                <button class="close_div" onclick="closeadvance2()">X</button>
+            </nav>
+             </div>
+             <div class="advancesolver3">
+                <nav class="advancebar" >
+                    <button class="close_div" onclick="closeadvance3()">X</button>
+                </nav>
+                 </div>
+
+    <!---------------------------------------------------------- area solver options -------------------------------------------->
+    <div class="tribox" style="display: none;flex-direction: column;" id="box"><br>
+        <h1>Triangle area solver</h1>
+        <br>
+        <input type="number" class="a" placeholder="side A"> <br> <br>
+        <input type="number" class="b" placeholder="side B"><br><br>
+        <input type="number" class="c" placeholder="side C"><br><br>
+        <span style="display: flex;">
+        <button onclick="solvetri()">solve</button>
+        <button style="color: blue;background: lightblue;margin-left: 70px;" onclick="cleartri()">clear</button></span><br>
+        <input type="text" class="tri-answer" style="height: 80px;" placeholder="area of triangle" readonly><br><br>
+           </div> 
+    
+    <!-- ------------second--------------------- -->
+    <div class="rectbox" style="display: none;flex-direction: column;" id="box"><br>
+        <h1>Rectangle/square area solver</h1>
+        <br>
+        <input type="number" class="length" placeholder="length/side "> <br> <br>
+        <input type="number" class="breadth" placeholder="breadth/side "><br><br>
+        <span style="display: flex;">
+        <button onclick="solverect()">solve</button>
+        <button style="color: blue;background: lightblue;margin-left: 70px;" onclick="clearrect()">clear</button></span><br>
+        <input type="text" class="rect-answer" style="height: 80px;" placeholder="area of rectangle/square" readonly><br><br>
+           </div>
+     
+    <!----------------------- third ----------------------->
+    <div class="trapbox" style="display: none;flex-direction: column;" id="box"><br>
+        <h1>Trapezium area solver</h1>
+        <br>
+        <input type="number" class="para-a" placeholder="parallel side A" style="color: blue;"> <br> <br>
+        <input type="number" class="para-b" placeholder="parallel side B" style="color: blue;"><br><br>
+        <input type="number" class="height-trap" placeholder="Height" style="color: green;"><br><br>
+        <span style="display: flex;">
+        <button onclick="solvetrap()">solve</button>
+        <button style="color: blue;background: lightblue;margin-left: 70px;" onclick="cleartrap()">clear</button></span><br>
+        <input type="text" class="trap-answer" style="height: 80px;" placeholder="area of trapezium" readonly><br><br>
+           </div> 
+    
+        <!-- -------------------------------fourth ----------------------->
+    <div class="paralbox" style="display: none;flex-direction: column;" id="box"><br>
+        <h1>Paralellogram area solver</h1>
+        <br>
+        <input type="number" class="base_paral" placeholder="base of paralellogram" style="color: blue;"> <br> <br>
+         <input type="number" class="height_paral" placeholder="height of paralellogram" style="color: green;"><br><br>
+        <span style="display: flex;">
+        <button onclick="solveparal()">solve</button>
+        <button style="color: blue;background: lightblue;margin-left: 70px;" onclick="clearparal()">clear</button></span><br>
+        <input type="text" class="paral-answer" style="height: 80px;" placeholder="area of paralellogram" readonly><br><br>
+           </div> 
+    
+           <!-- -------------------------------fifth ----------------------->
+    <div class="rhombox" style="display: none;flex-direction: column;" id="box"><br>
+        <h1>Rhombus area solver</h1>
+        <br>
+        <input type="number" class="pera_rhom" placeholder="perpendicular A" style="color: blue;"><br><br>
+        <input type="number" class="perb_rhom" placeholder="perpendicular B" style="color: blue;"><br><br>
+        <input type="number" class="diagnol_rhom" placeholder="diagnol" style="color: green;"> <br> <br>
+        
+        <span style="display: flex;">
+        <button onclick="solverhom()">solve</button>
+        <button style="color: blue;background: lightblue;margin-left: 70px;" onclick="clearrhom()">clear</button></span><br>
+        <input type="text" class="rhom-answer" style="height: 80px;" placeholder="area of rhombus" readonly><br><br>
+           </div> 
+<!----------------------------------------------volume option --------------------------------------------->
+           <div class="cubebox" style="display: none;flex-direction: column;" id="box"><br>
+            <h1>Cube volume solver</h1>
+            <br>
+            <input type="number" class="cube_a" placeholder="side (a)" style="color: blue;margin-top: 40px;"><br><br>
+            <span style="display: flex;">
+            <button onclick="solvecube()">solve</button>
+            <button style="color: blue;background: lightblue;margin-left: 70px;" onclick="clearcube()">clear</button></span><br>
+            <input type="text" class="cube-answer" style="height: 80px;margin-top: 80px;" placeholder="volume of cube" readonly><br><br>
+               </div> 
+<!-- ------------------cuboid------------------- -->
+<div class="cuboidbox" style="display: none;flex-direction: column;" id="box"><br>
+    <h1>Cuboid volume solver</h1>
+    <br>
+    <input type="number" class="cuboid_a" placeholder="length" style="color: blue;"><br><br>
+    <input type="number" class="cuboid_b" placeholder="breadth" style="color: orange;"><br><br>
+    <input type="number" class="cuboid_c" placeholder="height" style="color: green;"><br><br>
+    <span style="display: flex;">
+    <button onclick="solvecuboid()">solve</button>
+    <button style="color: blue;background: lightblue;margin-left: 70px;" onclick="clearcuboid()">clear</button></span><br>
+    <input type="text" class="cuboid-answer" style="height: 80px;" placeholder="volume of cuboid" readonly><br><br>
+       </div>  
+<!-------------------------------- cone volume --------------------- -->
+<div class="conebox" style="display: none;flex-direction: column;" id="box"><br>
+    <h1>Cone volume solver</h1>
+    <br>
+    <input type="number" class="cone_height" placeholder="height" style="color: blue;"><br><br>
+    <input type="number" class="cone_radius" placeholder="radius" style="color: orange;"><br><br>
+    <span style="display: flex;">
+    <button onclick="solvecone()">solve</button>
+    <button style="color: blue;background: lightblue;margin-left: 70px;" onclick="clearcone()">clear</button></span><br>
+    <input type="text" class="cone-answer" style="height: 80px;" placeholder="volume of cone" readonly><br><br>
+       </div>  
+
+       <!-------------------------------- pyramid volume --------------------- -->
+<div class="pyramidbox" style="display: none;flex-direction: column;" id="box"><br>
+    <h1> Pyramid volume solver</h1>
+    <br>
+    
+    <input type="number" class="pyramid_base" placeholder="base area" style="color: blue;"><br><br>
+    <input type="number" class="pyramid_height" placeholder="height" style="color: orangered;"><br><br>
+    <span style="display: flex;">
+    <button onclick="solvepyramid()">solve</button>
+    <button style="color: blue;background: lightblue;margin-left: 70px;" onclick="clearpyramid()">clear</button></span><br>
+    <input type="text" class="pyramid-answer" style="height: 80px;" placeholder="volume of pyramid" readonly><br><br>
+    <p>NOTE:baseArea(A) is area of bottom shape of pyramid<br>
+        eg:-triangular pyramid baseArea(A)= 1/2 x b x h</p><br>
+       </div>  
+
+     <!-------------------------------- cylinder volume --------------------- -->
+<div class="cylinderbox" style="display: none;flex-direction: column;" id="box"><br>
+    <h1> Cylinder volume solver</h1>
+    <br>
+    
+    <input type="number" class="cylinder_radius" placeholder="radius" style="color: blue;"><br><br>
+    <input type="number" class="cylinder_height" placeholder="height" style="color: orangered;"><br><br>
+    <span style="display: flex;">
+    <button onclick="solvecylinder()">solve</button>
+    <button style="color: blue;background: lightblue;margin-left: 70px;" onclick="clearcylinder()">clear</button></span><br>
+    <input type="text" class="cylinder-answer" style="height: 80px;" placeholder="volume of cylinder" readonly><br><br>
+    
+       </div>  
+
+ <!----------------------------------------------------------------- total surface area -------------------------------->
+ <div class="tsacubebox" style="display: none;flex-direction: column;" id="box"><br>
+    <h1>Cube T.S.A. solver</h1>
+    <br>
+    <input type="number" class="tsacube_a" placeholder="side (a)" style="color: blue;margin-top: 40px;"><br><br>
+    <span style="display: flex;">
+    <button onclick="solvetsacube()">solve</button>
+    <button style="color: blue;background: lightblue;margin-left: 70px;" onclick="cleartsacube()">clear</button></span><br>
+    <input type="text" class="tsacube-answer" style="height: 80px;margin-top: 80px;" placeholder="T.S.A. of cube" readonly><br><br>
+       </div> 
+    
+<!-------------------------- cuboid tsa ---------------------- -->
+<div class="tsacuboidbox" style="display: none;flex-direction: column;" id="box"><br>
+    <h1> Cuboid T.S.A. solver</h1>
+    <br>
+    <input type="number" class="tsacuboid_l" placeholder="length" style="color: blue;"><br><br>
+    <input type="number" class="tsacuboid_b" placeholder="breadth" style="color: orange;"><br><br>
+    <input type="number" class="tsacuboid_h" placeholder="height" style="color: green;"><br><br>
+    <span style="display: flex;">
+    <button onclick="solvetsacuboid()">solve</button>
+    <button style="color: blue;background: lightblue;margin-left: 70px;" onclick="cleartsacuboid()">clear</button></span><br>
+    <input type="text" class="tsacuboid-answer" style="height: 80px;" placeholder="tsa of cuboid" readonly><br><br>
+       </div>
+<!-------------------------- cone tsa ---------------------- -->
+
+<div class="tsaconebox" style="display: none;flex-direction: column;" id="box"><br>
+    <h1>Cone T.S.A solver</h1>
+    <br>
+    <input type="number" class="tsacone_height" placeholder="height" style="color: blue;"><br><br>
+    <input type="number" class="tsacone_radius" placeholder="radius" style="color: orange;"><br><br>
+    <span style="display: flex;">
+    <button onclick="solvetsacone()">solve</button>
+    <button style="color: blue;background: lightblue;margin-left: 70px;" onclick="cleartsacone()">clear</button></span><br>
+    <input type="text" class="tsacone-answer" style="height: 80px;" placeholder="tsa of cone" readonly><br><br>
+       </div>  
+       <div class="mathpad"   style="display: none;">
+        <nav class="advancebar" >
+            
+            <button class="close_div" onclick="closeadvance()">X</button>
+        </nav>
+        
+        <div class="mathinput" contenteditable="true" >
+            <div class="mathquestion" ></div>
+        </div>
+        <div class="mathanswer"></div>
+       </div>
+       <style>
+          .mathquestion{
+            color: rgb(0, 238, 255);
+               border-radius: 5px;
+               padding: 10px;
+               margin-top: 10px;
+            background-color: rgb(0, 0, 0);
+             
+          }
+          .mathanswer{
+              position: absolute;
+              top: 0;
+              right: 0;
+            color: rgb(199, 199, 199);
+               
+               padding: 10px;
+               margin-top: 10px;
+            background-color: rgb(0, 0, 0);
+             
+          }
+           .mathpad{
+               width: 850px;
+               height: 480px;
+               border: none;
+               background-color: rgb(31, 31, 34);
+               position: absolute;
+               top: 50px;
+               left:100px;
+           }
+           .mathpad .advancebar{
+               background-color: black;
+           }
+           .mathpad .mathinput{
+               width:99%;
+               height: 90%;
+               padding:12px;
+               color: #f2f2f2;
+              
+           }
+           .mathpad .mathinput:focus{
+               outline: none;
+        
+           }
+           .answerofpad{
+               background-color:  rgb(19, 19, 20);
+               color: silver;
+               border-radius: 5px;
+               padding: 10px;
+               margin-top: 10px;
+           }
+           .answerofpad span{
+               color: #00bb5d;
+           }
+       </style>
+    <!-- -------------------------------------------------------------------------- close advance-options tab-------------------------------------- -->
+  <script>
+     
+      var solvebox=document.querySelector(".advancesolver");
+      var solvebox2=document.querySelector(".advancesolver2");
+      var solvebox3=document.querySelector(".advancesolver3");
+
+function showadvance() {
+        var advanceopt=document.querySelector(".advance-options");
+        advanceopt.setAttribute("style","animation:drop-right 0.5s linear both");
+        
+    }
+    function showareaopt() {
+        var area=document.querySelector(".area");
+        area.setAttribute("style","animation:drop-area 1s linear both");
+    }
+    function showvolopt() {
+        var vol=document.querySelector(".volume");
+        vol.setAttribute("style","animation:drop-area 1s linear both");
+    }
+    function closearea() {
+        var area=document.querySelector(".area");
+        area.removeAttribute("style","animation:drop-area 1s linear both");
+        area.setAttribute("style","animation:nodrop-area 1s linear both") 
+    }
+    function closeadvance() {
+        solvebox.style.display="none";
+    }
+    function closeadvance2() {
+        solvebox2.style.display="none";
+     }
+     function closeadvance3() {
+        solvebox3.style.display="none";
+     }
+    function ref_close(){
+        var ref=document.querySelector(".referencebox");
+        ref.style.display="none";
+        
+    }
+    document.addEventListener("keyup",(e)=>{
+        var c=document.querySelector('.mathinput'); 
+    var sp=c.innerText;   
+    var replacewith="*";
+    var ity=sp.split("\n");
+    var num=-1;
+  
+if (e.key=='Control') {
+   
+var jo=sp.replaceAll(" ",replacewith);
+var k=eval(jo);
+var p=document.querySelector(".mathinput .mathquestion");
+//    document.querySelector(".mathinput").innerHTML+=p.value;
+       document.body.innerHTML+="<script>"+p.innerText+"</"+"script>";
+            
+        
+        }
+    })
+    var m=0;
+    function sq(a,b){
+       
+m++;
+var first=a;
+var second=b; 
+document.querySelector('.mathinput').innerHTML+="<div class='answerofpad v"+m+"' contentEditable='false'>square between "+a+" and "+b+"<br><span>» </span></div><br>";
+for (let i = Number(first);i < Number(second)+1;i++) {
+    document.querySelector(".v"+m).innerHTML+="<div>"+i+"<sup>2</sup>"+" = "+i*i+"</div>";
+      console.log(i*i)
+    
+}
+    }
+    var h=0;
+    function cb(a,b){
+        
+h++;
+var first=a;
+var second=b;
+document.querySelector('.mathinput').innerHTML+="<div class='answerofpad h"+h+"' contentEditable='false'>cube between "+a+" and "+b+"<br><span>» </span></div><br>";
+for (let i = Number(first);i < Number(second)+1;i++) {
+    
+   document.querySelector(".h"+h).innerHTML+="<div>"+i+"<sup>3</sup>"+" = "+i*i*i+"</div>";
+      console.log(i*i*i)
+    
+}
+    }
+    var t=0;
+    function tb(a,b){
+        
+t++;
+var first=a;
+var second=b;
+if (b!==undefined) {
+    document.querySelector('.mathinput').innerHTML+="<div class='answerofpad t"+t+"' contentEditable='false'>table of "+a+" upto "+b+" times<br><span>» </span></div><br>";
+
+for (let i = 1;i < Number(second)+1;i++) {
+    
+   document.querySelector(".t"+t).innerHTML+="<div>"+Number(first)+" x "+i+" = "+Number(first)*i+"</div>";
+      console.log(i*i*i)
+    
+}}else{
+    document.querySelector('.mathinput').innerHTML+="<div class='answerofpad t"+t+"' contentEditable='false'>table of "+a+" upto 10 times<br><span>» </span></div>";
+
+    for (let i = 1;i < 10;i++) {
+    
+    document.querySelector(".t"+t).innerHTML+="<div>"+Number(first)+" x "+i+" = "+Number(first)*i+"</div>";
+       console.log(i*i*i)
+     
+ } 
+}
+    }
+    function closevol() { 
+        var vol=document.querySelector(".volume");
+        vol.removeAttribute("style","animation:drop-area 1s linear both");
+        vol.setAttribute("style","animation:nodrop-area 1s linear both") 
+    }
+    function closetsa() { 
+        var tsa=document.querySelector(".tsa");
+        tsa.removeAttribute("style","animation:drop-area 1s linear both");
+        tsa.setAttribute("style","animation:nodrop-area 1s linear both") 
+    }
+    function showtsaopt() {
+        var tsa=document.querySelector(".tsa");
+        tsa.setAttribute("style","animation:drop-area 1s linear both");
+    }
+   
+    var tri_a=document.querySelector(".a");
+    var tri_b=document.querySelector(".b");
+    var tri_c=document.querySelector(".c");
+    var tri_ans=document.querySelector(".tri-answer");
+    function solvetri() {
+        var a=Number(tri_a.value);
+ 	var b=Number(tri_b.value);
+ 	var c=Number(tri_c.value);
+	var s=(a+b+c)/2;
+	var calculate=s*(s-a)*(s-b)*(s-c);
+	
+	tri_ans.value=Math.sqrt(calculate);
+    }
+    function cleartri() {
+        tri_ans.value="";
+        tri_a.value="";
+        tri_b.value="";
+        tri_c.value="";
+    }
+
+    function swipe() {
+        document.querySelector(".advance-options").setAttribute("style","animation:swipe 0.5s linear both")
+    }
+
+
+    function triangle_area() {
+        solvebox.style.display="block";
+        solvebox2.style.display="none";
+        solvebox.appendChild(document.querySelector(".tribox"))
+        document.querySelector(".tribox").style.display="flex";
+        document.querySelector(".paralbox").style.display="none";
+        document.querySelector(".trapbox").style.display="none";
+        document.querySelector(".rectbox").style.display="none";
+        document.querySelector(".rhombox").style.display="none";
+    }
+    // rectangle area
+    function rectangle_area() {
+        solvebox2.style.display="none";
+        solvebox.style.display="block";
+        solvebox.appendChild(document.querySelector(".rectbox"))
+        document.querySelector(".rectbox").style.display="flex";
+        document.querySelector(".tribox").style.display="none";
+        document.querySelector(".paralbox").style.display="none";
+        document.querySelector(".trapbox").style.display="none";
+        document.querySelector(".rhombox").style.display="none";
+    }
+    var l=document.querySelector(".length");
+        var b=document.querySelector(".breadth");
+        var rect_ans=document.querySelector(".rect-answer");
+
+    function solverect(){
+        rect_ans.value=l.value*b.value;
+    }
+    function clearrect() {
+       l.value="";
+       b.value="";
+       rect_ans.value=""; 
+    }
+
+    // trapezium
+   function trapezium_area() {
+    solvebox2.style.display="none";
+        solvebox.style.display="block";
+        solvebox.appendChild(document.querySelector(".trapbox"))
+        document.querySelector(".trapbox").style.display="flex";
+        document.querySelector(".tribox").style.display="none";
+        document.querySelector(".paralbox").style.display="none";
+        document.querySelector(".rectbox").style.display="none";
+        document.querySelector(".rhombox").style.display="none";
+    }
+    var trap_h=document.querySelector(".height-trap");
+        var para_a=document.querySelector(".para-a");
+        var para_b=document.querySelector(".para-b");
+        var trap_ans=document.querySelector(".trap-answer");
+
+    function solvetrap(){
+        var sum=Number(para_a.value)+Number(para_b.value);
+        trap_ans.value=(1/2)*(trap_h.value*sum);
+    }
+    function cleartrap() {
+        para_a.value="";
+       trap_h.value="";
+       para_b.value="";
+       trap_ans.value=""; 
+    }
+     // paralellogram
+    function paralellogram_area() {
+        solvebox2.style.display="none";
+        solvebox.style.display="block";
+        solvebox.appendChild(document.querySelector(".paralbox"))
+        document.querySelector(".paralbox").style.display="flex";
+        document.querySelector(".tribox").style.display="none";
+        document.querySelector(".trapbox").style.display="none";
+        document.querySelector(".rectbox").style.display="none";
+        document.querySelector(".rhombox").style.display="none";
+    }
+    var base_paral=document.querySelector(".base_paral");
+        var height_paral=document.querySelector(".height_paral");
+        var paral_ans=document.querySelector(".paral-answer");
+
+    function solveparal(){
+        
+        paral_ans.value=base_paral.value*height_paral.value;
+    }
+    function clearparal() {
+        base_paral.value="";
+       height_paral.value="";
+       paral_ans.value=""; 
+    }
+    
+    // rhombus 
+    function rhombus_area() {
+        solvebox2.style.display="none";
+        solvebox.style.display="block";
+        solvebox.appendChild(document.querySelector(".rhombox"))
+        document.querySelector(".rhombox").style.display="flex";
+        document.querySelector(".paralbox").style.display="none";
+        document.querySelector(".tribox").style.display="none";
+        document.querySelector(".trapbox").style.display="none";
+        document.querySelector(".rectbox").style.display="none";
+    }
+    var d_rhom=document.querySelector(".diagnol_rhom");
+        var pera_rhom=document.querySelector(".pera_rhom");
+        var perb_rhom=document.querySelector(".perb_rhom");
+        var rhom_ans=document.querySelector(".rhom-answer");
+
+    function solverhom(){
+        var sum=Number(pera_rhom.value)+Number(perb_rhom.value);
+        rhom_ans.value=(1/2)*(d_rhom.value*sum);
+    }
+    function clearrhom() {
+        d_rhom.value="";
+        pera_rhom.value="";
+       perb_rhom.value="";
+       rhom_ans.value=""; 
+    }
+
+    // ------------------------------------start volume----------------------------------------
+    // cube 
+    function cube_volume() {
+        solvebox2.style.display="block";
+        solvebox.style.display="none";
+        solvebox2.appendChild(document.querySelector(".cubebox"))
+        document.querySelector(".cubebox").style.display="flex";
+        document.querySelector(".cuboidbox").style.display="none";
+        document.querySelector(".conebox").style.display="none";
+        document.querySelector(".pyramidbox").style.display="none";
+        document.querySelector(".cylinderbox").style.display="none";
+
+        
+    }
+    var cube_a=document.querySelector(".cube_a");
+    var cube_ans=document.querySelector(".cube-answer");
+    function solvecube(){
+        cube_ans.value=cube_a.value*cube_a.value*cube_a.value;
+    }
+    function clearcube() {
+       cube_a.value="";
+       cube_ans.value=""; 
+    }
+
+    //   cuboid 
+    function cuboid_volume() {
+        solvebox2.style.display="block";
+        solvebox.style.display="none";
+        solvebox2.appendChild(document.querySelector(".cuboidbox"))
+        document.querySelector(".cuboidbox").style.display="flex";
+        document.querySelector(".cubebox").style.display="none";
+        document.querySelector(".conebox").style.display="none";
+        document.querySelector(".pyramidbox").style.display="none";
+        document.querySelector(".cylinderbox").style.display="none";
+        
+    }
+    var cuboid_a=document.querySelector(".cuboid_a");
+    var cuboid_b=document.querySelector(".cuboid_b");
+    var cuboid_c=document.querySelector(".cuboid_c");
+    var cuboid_ans=document.querySelector(".cuboid-answer");
+    function solvecuboid(){
+        cuboid_ans.value=cuboid_a.value*cuboid_b.value*cuboid_c.value;
+    }
+    function clearcuboid() {
+       cuboid_a.value="";
+       cuboid_b.value="";
+       cuboid_c.value="";
+       cuboid_ans.value=""; 
+    }
+// -------------------------------------------cone_volume------------------------------------------
+    function cone_volume() {
+        solvebox2.style.display="block";
+        solvebox.style.display="none";
+        solvebox2.appendChild(document.querySelector(".conebox"))
+        document.querySelector(".conebox").style.display="flex";
+        document.querySelector(".cubebox").style.display="none";
+        document.querySelector(".pyramidbox").style.display="none";
+        document.querySelector(".cuboidbox").style.display="none";
+        document.querySelector(".cylinderbox").style.display="none";
+        
+    }
+    var cone_height=document.querySelector(".cone_height"); 
+    var cone_radius=document.querySelector(".cone_radius");
+    var cone_ans=document.querySelector(".cone-answer");
+    function solvecone(){ 
+        var str=Number(22/7)*(cone_radius.value*cone_radius.value)*cone_height.value;
+        cone_ans.value=(str)/3; 
+        
+    }
+    function clearcone() {
+       cone_height.value="";
+       cone_radius.value="";
+      cone_ans.value=""; 
+    }
+    // -------------------------------------------pyramid_volume------------------------------------------
+    function pyramid_volume() {
+        solvebox2.style.display="block";
+        solvebox.style.display="none";
+        solvebox2.appendChild(document.querySelector(".pyramidbox"))
+        document.querySelector(".pyramidbox").style.display="flex";
+        document.querySelector(".conebox").style.display="none";
+        document.querySelector(".cubebox").style.display="none";
+        document.querySelector(".cuboidbox").style.display="none";
+        document.querySelector(".cylinderbox").style.display="none";
+        
+    }
+    var pyramid_height=document.querySelector(".pyramid_height"); 
+    var pyramid_base=document.querySelector(".pyramid_base");
+    var pyramid_ans=document.querySelector(".pyramid-answer");
+    function solvepyramid(){ 
+        var str=(1/3)*pyramid_base.value*pyramid_height.value;
+        pyramid_ans.value=(str)/3; 
+        
+    }
+    function clearpyramid() {
+       pyramid_height.value="";
+       pyramid_base.value="";
+      pyramid_ans.value=""; 
+    }
+
+    // -------------------------------------------cylinder_volume------------------------------------------
+    function cylinder_volume() {
+        solvebox2.style.display="block";
+        solvebox.style.display="none";
+        solvebox2.appendChild(document.querySelector(".cylinderbox"))
+        document.querySelector(".cylinderbox").style.display="flex";
+        document.querySelector(".conebox").style.display="none";
+        document.querySelector(".pyramidbox").style.display="none";
+        document.querySelector(".cubebox").style.display="none";
+        document.querySelector(".cuboidbox").style.display="none";
+        
+    }
+    var cylinder_height=document.querySelector(".cylinder_height"); 
+    var cylinder_radius=document.querySelector(".cylinder_radius");
+    var cylinder_ans=document.querySelector(".cylinder-answer");
+    function solvecylinder(){ 
+        var str=(22/7)*(cylinder_radius.value*cylinder_radius.value)*cylinder_height.value;
+        cylinder_ans.value=str; 
+        
+    }
+    function clearcylinder() {
+       cylinder_height.value="";
+       cylinder_radius.value="";
+      cylinder_ans.value=""; 
+    }
+
+    // ------------------------------------start tsa----------------------------------------
+    // cube tsa 
+    function cube_tsa() {
+        solvebox3.style.display="block";
+        solvebox2.style.display="none";
+        solvebox.style.display="none";
+        solvebox3.appendChild(document.querySelector(".tsacubebox"))
+        document.querySelector(".tsacubebox").style.display="flex";
+        document.querySelector(".tsacuboidbox").style.display="none";
+        document.querySelector(".tsaconebox").style.display="none";
+        }
+    var tsacube_a=document.querySelector(".tsacube_a");
+    var tsacube_ans=document.querySelector(".tsacube-answer");
+    function solvetsacube(){
+        tsacube_ans.value=6*(tsacube_a.value*tsacube_a.value);
+    }
+    function cleartsacube() {
+       tsacube_a.value="";
+       tsacube_ans.value=""; 
+    }
+  
+    // cuboid
+    function cuboid_tsa() {
+        solvebox3.style.display="block";
+        solvebox2.style.display="none";
+        solvebox.style.display="none";
+        solvebox3.appendChild(document.querySelector(".tsacuboidbox"))
+        document.querySelector(".tsacuboidbox").style.display="flex";
+        document.querySelector(".tsacubebox").style.display="none";
+        document.querySelector(".tsaconebox").style.display="none";
+    }
+    var tsacuboid_l=document.querySelector(".tsacuboid_l");
+    var tsacuboid_b=document.querySelector(".tsacuboid_b");
+    var tsacuboid_h=document.querySelector(".tsacuboid_h");
+    var tsacuboid_ans=document.querySelector(".tsacuboid-answer");
+    function solvetsacuboid(){
+        var multi=(tsacuboid_l.value*tsacuboid_b.value)+(tsacuboid_b.value*tsacuboid_h.value)+(tsacuboid_l.value*tsacuboid_h.value)
+        tsacuboid_ans.value=2*multi;
+    }
+    function cleartsacuboid() {
+       tsacuboid_l.value="";
+       tsacuboid_b.value="";
+       tsacuboid_h.value="";
+       tsacuboid_ans.value=""; 
+    } 
+
+    // cone tsa 
+    function cone_tsa() {
+        solvebox3.style.display="block";
+        solvebox.style.display="none";
+        solvebox2.style.display="none";
+        solvebox3.appendChild(document.querySelector(".tsaconebox"))
+        document.querySelector(".tsaconebox").style.display="flex";
+        document.querySelector(".tsacubebox").style.display="none";
+        document.querySelector(".tsacuboidbox").style.display="none";
+       
+    }
+    var tsacone_height=document.querySelector(".tsacone_height"); 
+    var tsacone_radius=document.querySelector(".tsacone_radius");
+    var tsacone_ans=document.querySelector(".tsacone-answer");
+    function solvetsacone(){ 
+        var sqr=Number(tsacone_height.value*tsacone_height.value)+Number(tsacone_radius.value*tsacone_radius.value)
+        var slant_height=Math.sqrt(sqr);
+        console.log(slant_height);
+        tsacone_ans.value=(3.14*tsacone_radius.value*slant_height)+(3.14*(tsacone_radius.value*tsacone_radius.value));
+        
+    }
+    
+    function cleartsacone() {
+       tsacone_height.value="";
+       tsacone_radius.value="";
+      tsacone_ans.value=""; 
+    }
+  </script>    
+</body>
+</html>
